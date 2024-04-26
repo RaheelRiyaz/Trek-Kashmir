@@ -1,0 +1,63 @@
+<div class="container-fluid" style="z-index: 99;" [class.my-bg]="!token" [style.position]="token?'relative':'absolute'">
+<div class="container" [style.margin-top]="token ? '0px' : '100px'">
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-image" [class.text-light]="!token">
+        <thead>
+          <tr>
+            <th scope="col">Trek</th>
+            <th scope="col">Image/Video</th>
+            <th scope="col">Place</th>
+            <th scope="col">From</th>
+            <th scope="col">To</th>
+            <th scope="col">Package</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let trek of treks">
+            <th scope="row">1</th>
+            <td class="w-25">
+              <img *ngIf="!trek.isVideo;else video"
+                src="{{ baseUrl + trek.filePath }}"
+                class="img-fluid img-thumbnail"
+                alt="Sheep"
+              />
+              <ng-template #video>
+                <button
+                  [routerLink]="
+                    !token
+                      ? [
+                          '/packages/treks/video',
+                          trek.filePath.slice(trek.filePath.lastIndexOf('/') + 1)
+                        ]
+                      : [
+                          '/client/packages/treks/video',
+                          trek.filePath.slice(trek.filePath.lastIndexOf('/') + 1)
+                        ]
+                  "
+                  class="btn mt-5 btn-sm btn-outline-success"
+                >
+                  Watch Video
+                </button>
+              </ng-template>
+            </td>
+            <td>{{ trek.name }}</td>
+            <td>{{ trek.startDate | date }}</td>
+            <td>{{ trek.endDate | date }}</td>
+            <td>
+              <button
+                class="btn btn primary"
+                [routerLink]="
+                  token ? ['/client/packages',trek.packageId] : ['/packages/details', trek.packageId]
+                "
+              >
+                View Package
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>

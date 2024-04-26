@@ -1,0 +1,115 @@
+<div style="margin-top: 100px">
+    <app-preloader *ngIf="showLoader; else mainSection"> </app-preloader>
+    <ng-template #mainSection>
+      <div class="container rounded bg-white p-5">
+        <div class="bg row d-flex justify-content-center p-5">
+          <div class="col-sm-4 col-md-4 ml-1">
+            <div
+              class="bg-white p-2 d-flex flex-column"
+              style="border-radius: 14px"
+            >
+              <div class="box">
+                <div class="profile">
+                  <div class="image">
+                    <img
+                      width="300px"
+                      height="300px"
+                      src="https://images.unsplash.com/photo-1666545380922-1296a4ac9521?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1635&q=80"
+                    />
+                  </div>
+                  <div class="content">
+                    <span>{{ packageDetails?.name }}</span>
+                    <span>{{ packageDetails?.price | currency : "INR" }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-5 col-md-6 mobile">
+            <div
+              class="bg-white p-3 d-flex flex-column"
+              style="border-radius: 14px"
+            >
+              <div class="pt-2">
+                <h5>Package Details</h5>
+              </div>
+              <div class="d-flex">
+                <div class="col-8">Group Size</div>
+                <div class="ml-auto">
+                  <b>{{ packageDetails?.groupSize }}</b>
+                </div>
+              </div>
+              <div class="d-flex">
+                <div class="col-8">Total Bookings</div>
+                <div class="ml-auto">
+                  <b>{{ packageDetails?.totalBooking }}</b>
+                </div>
+              </div>
+              <div class="d-flex">
+                <div class="col-8">Booking Left</div>
+                <div class="ml-auto">
+                  <b>{{ packageDetails?.groupSize - packageDetails?.totalBooking }}</b>
+                </div>
+              </div>
+              <div class="d-flex">
+                <div class="col-8">Start Date</div>
+                <div class="ml-auto">
+                  <b>{{ packageDetails?.startDate | date }}</b>
+                </div>
+              </div>
+              <div class="d-flex">
+                <div class="col-8">End Date</div>
+                <div class="ml-auto">
+                  <b>{{ packageDetails?.endDate | date }}</b>
+                </div>
+              </div>
+              <div class="d-flex">
+                <div class="col-8">Guide Name</div>
+                <div class="ml-auto green">{{ packageDetails?.guideName }}</div>
+              </div>
+              <div class="d-flex">
+                <div class="col-8">Guid Contact Number</div>
+                <div class="ml-auto">
+                  <strong>{{ packageDetails?.guideContactNo }}</strong>
+                </div>
+              </div>
+              <div class="d-flex">
+                <div class="col-8">Package Price</div>
+                <div class="ml-auto green">
+                  {{ packageDetails?.price | currency : "INR" }}
+                </div>
+              </div>
+              <div class="pt-2">
+                <div class="border-top px-4 mx-8 pt-2"></div>
+                <h5>Package description</h5>
+              </div>
+              <div class="pl-2">
+                <div>{{ packageDetails?.description }}</div>
+              </div>
+              <div *ngIf="packageDetails?.groupSize - packageDetails?.totalBooking > 0;else elseBlock">
+                <input
+                type="button"
+                value= "Proceed To Payment"
+                class="btn mt-4 btn-primary btn-block"
+                style="border-radius: 100px; background-color: #2447f9"
+                (click)="bookPackage()"
+                id="rzp-button1"
+              />
+              </div>
+            <ng-template #elseBlock>
+              <input
+                type="button"
+                value= "Booking Full"
+                class="btn mt-4 btn-primary btn-block"
+                style="border-radius: 100px; background-color: #2447f9"
+                id="rzp-button1"
+                disabled
+              />
+            </ng-template>
+    
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+</div>

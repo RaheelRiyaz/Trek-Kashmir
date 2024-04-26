@@ -1,0 +1,109 @@
+body {
+    background: #eee;
+}
+
+.ratings i {
+    font-size: 16px;
+    color: red;
+}
+
+.strike-text {
+    color: red;
+    text-decoration: line-through;
+}
+
+.product-image {
+    width: 100%;
+}
+
+.dot {
+    height: 7px;
+    width: 7px;
+    margin-left: 6px;
+    margin-right: 6px;
+    margin-top: 3px;
+    background-color: blue;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.spec-1 {
+    color: #938787;
+    font-size: 15px;
+}
+
+h5 {
+    font-weight: 400;
+}
+
+.para {
+    font-size: 16px;
+}
+
+#searchbox {
+    height: 40px;
+    outline: 0;
+    min-width: 30vw;
+    width: auto;
+    margin: auto;
+    display: block;
+    border: 1px solid gray;
+    margin: 10px auto;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+.switch-field {
+    display: flex;
+    margin-bottom: 36px;
+    overflow: hidden;
+}
+
+.switch-field input {
+    position: absolute !important;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    width: 1px;
+    border: 0;
+    overflow: hidden;
+}
+
+.switch-field label {
+    background-color: #e4e4e4;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 14px;
+    line-height: 1;
+    text-align: center;
+    padding: 8px 16px;
+    margin-right: -1px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+    transition: all 0.1s ease-in-out;
+}
+
+.switch-field label:hover {
+    cursor: pointer;
+}
+
+.switch-field input:checked+label {
+    background-color: #a5dc86;
+    box-shadow: none;
+}
+
+.switch-field label:first-of-type {
+    border-radius: 4px 0 0 4px;
+}
+
+.switch-field label:last-of-type {
+    border-radius: 0 4px 4px 0;
+}
+
+.opening-closing {
+    width: 129px;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.actions {
+    margin-left: 200px;
+}

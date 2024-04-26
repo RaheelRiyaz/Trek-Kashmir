@@ -1,0 +1,286 @@
+<!-- <section>
+  <input
+  type="search"
+  name=""
+  placeholder="Search Package"
+  id="searchbox"
+  (input)="filterPackage($event)"
+/>
+  <div class="container py-5">
+    <div
+      class="row justify-content-center m-2"
+      *ngFor="let package of packages"
+    >
+      <div class="col-md-12 col-xl-10">
+        <div class="card shadow-0 border rounded-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+                <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                  <img src="{{ basePath + package.filePath }}" class="w-100" />
+                  <a href="#!">
+                    <div class="hover-overlay">
+                      <div
+                        class="mask"
+                        style="background-color: rgba(253, 253, 253, 0.15)"
+                      ></div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-6 col-xl-6">
+                <h5>{{ package.name }}</h5>
+                <div class="d-flex flex-row">
+                  <div class="text-danger mb-1 me-2">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                  </div>
+                  <span>145</span>
+                </div>
+                <div class="mt-1 mb-0 text-muted small">
+                  <span>GroupSize {{ package.groupSize }}</span>
+                  <span class="text-primary"> • </span>
+                  <span>{{ package.startDate | date }}</span>
+                  <span class="text-primary"> - </span>
+                  <span><br />{{ package.endDate | date }}</span>
+                </div>
+                <div class="mb-2 text-muted small">
+                  <span>Unique design</span>
+                  <span class="text-primary"> • </span>
+                  <span>For women</span>
+                  <span class="text-primary"> • </span>
+                  <span>Casual<br /></span>
+                </div>
+                <p class="text-truncate mb-4 mb-md-0">
+                  {{ package.description }}
+                </p>
+              </div>
+              <div
+                class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start"
+              >
+                <div class="d-flex flex-row align-items-center mb-1">
+                  <h4 class="mb-1 me-1">
+                    {{ package.price | currency : "INR" }}
+                  </h4>
+                </div>
+                <h6 class="text-success">
+                  {{
+                    package.packageBookingStatus === 1
+                      ? "Bookings Open"
+                      : "Bookings Closed"
+                  }}
+                </h6>
+                <div class="d-flex flex-column mt-4">
+                  <button
+                    class="btn btn-primary btn-sm"
+                    type="button"
+                    routerLink="details/{{ package.id }}"
+                  >
+                    Details
+                  </button>
+                  <button
+                    class="btn btn-dark btn-sm mt-3"
+                    type="button"
+                    routerLink="treks/{{ package.id }}"
+                  >
+                    Treks
+                  </button>
+                  <button
+                    class="btn btn-outline-success btn-sm mt-2"
+                    type="button"
+                    [disabled]="package.packageBookingStatus !== 1"
+                    (click)="bookPackage(package.id)"
+                  >
+                    Buy Package
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!--
+<ng-template #mainSection>
+  <div class="container mt-5 mb-5">
+    <div class="d-flex justify-content-center row">
+      <div class="col-md-12">
+        <div
+          class="row p-2 bg-white border rounded"
+          *ngFor="let package of packages"
+        >
+          <div class="col-md-3 mt-1">
+            <img
+              height="150px"
+              width="150px"
+              class="img-fluid img-responsive rounded product-image"
+              src="{{
+                package.filePath
+                  ? baseUrl + package.filePath
+                  : 'https://images.unsplash.com/photo-1666545380922-1296a4ac9521?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1635&q=80'
+              }}"
+            />
+          </div>
+
+          <div class="col-md-6 mt-1">
+            <div class="d-flex">
+              <h5>{{ package.name }}</h5>
+              <h4 class="ml-4 pl-4 btn btn-info">
+                <span>
+                  Booking :{{
+                    package.packageBookingStatus == 1 ? " Open" : " Closed"
+                  }}
+                </span>
+              </h4>
+            </div>
+
+            <div class="mt-1 mb-1 spec-1">
+              <span></span>
+              <span>{{ package.groupSize + " Members" }}</span
+              ><span class="dot"></span>
+              <span>{{ package.totalBooking + " Booking" }}</span
+              ><span class="dot"></span>
+              <span>From {{ package.startDate | date }}</span
+              ><span class="dot"></span
+              ><span>To {{ package.endDate | date }}<br /></span>
+            </div>
+            <div class="mt-1 mb-1 spec-1">
+              <span>Guide Name :{{ package.guideName }} </span>
+            </div>
+            <p class="text-justif para mb-0">
+              {{ package.description }}<br /><br />
+            </p>
+          </div>
+          <div
+            class="align-items-center align-content-center col-md-3 border-left mt-1"
+          >
+            <div class="d-flex flex-row align-items-center">
+              <h4 class="mr-1">{{ package.price | currency : "INR" }}</h4>
+            </div>
+            <div class="d-flex flex-column mt-4">
+              <button
+                class="btn btn-primary btn-sm"
+                type="button"
+                routerLink="details/{{ package.id }}"
+              >
+                Details
+              </button>
+              <button
+                class="btn btn-primary btn-sm mt-2"
+                type="button"
+                routerLink="treks/{{ package.id }}"
+              >
+                Treks
+              </button>
+
+              <div
+                *ngIf="
+                  package.packageBookingStatus == 1 &&
+                    package?.groupSize - package?.totalBooking > 0;
+                  else elseBlock
+                "
+              >
+                <button
+                  type="button"
+                  class="btn btn-outline-primary mt-4"
+                  routerLink="/client/packages/{{ package.id }}"
+                >
+                  {{
+                    package.packageBookingStatus == 1 &&
+                    package.groupSize - package.totalBooking > 0
+                      ? "Book Package    "
+                      : "   Booking Full"
+                  }}
+                  <span class="badge rounded-circle p-3 bg-danger">
+                    {{ package.groupSize - package.totalBooking }} Left
+                    <span class="visually-hidden"> </span>
+                  </span>
+                </button>
+              </div>
+              <ng-template #elseBlock>
+                <button
+                  type="button"
+                  class="btn btn-outline-primary mt-4"
+                  disabled
+                >
+                  No Booking
+                  <span class="badge rounded-circle p-3 bg-dark">
+                    {{ package.groupSize - package.totalBooking }} Left
+                    <span class="visually-hidden"> </span>
+                  </span>
+                </button>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template> -->
+
+<app-preloader *ngIf="showLoader; else mainSection"></app-preloader>
+
+<ng-template #mainSection>
+  <section
+  class="my-bg"
+  >
+    <input
+      type="search"
+      name=""
+      placeholder="Search Package"
+      id="searchbox"
+      (input)="filterPackage($event)"
+    />
+    <div class="container py-2">
+      <article class="postcard light red" *ngFor="let package of packages">
+        <a class="postcard__img_link">
+          <img
+            class="postcard__img cursor-pointer"
+            [routerLink]="token?['/client/packages/details/',package.id]:['/packages/details',package.id]"
+            src="{{
+              package.filePath
+                ? basePath + package.filePath
+                : 'https://images.unsplash.com/photo-1666545380922-1296a4ac9521?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1635&q=80'
+            }}"
+            alt="Package Image"
+          />
+        </a>
+        <div class="postcard__text t-dark">
+          <h1 class="postcard__title red">
+            <a>{{ package.name }}</a>
+          </h1>
+          <div class="postcard__subtitle small">
+            <time datetime="2020-05-25 12:00:00">
+              <i class="fas fa-calendar-alt mr-2"></i
+              >{{ package.startDate | date }} - {{ package.endDate | date }}
+            </time>
+          </div>
+          {{ package.packageBookingStatus === 1? "Booking Open" : "Booking Close" }}
+          <div class="postcard__bar"></div>
+          <div class="postcard__preview-txt">
+            {{ package.description }}
+          </div>
+          <div class="font-weight-bold">
+            {{ package.price | currency : "INR" }}
+          </div>
+          <ul class="postcard__tagbox">
+            <li class="tag__item" routerLink="details/{{ package.id }}">
+              <i class="fa-regular fa-eye mr-1"></i>View
+            </li>
+            <li class="tag__item" routerLink="treks/{{ package.id }}">
+              <i class="fa-solid fa-location-dot mr-1"></i>Treks
+            </li>
+            <li class="tag__item play red" (click)="bookPackage(package.id)">
+              <a><i class="fa-solid fa-bag-shopping mr-1"></i>Book Now</a>
+            </li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+</ng-template>

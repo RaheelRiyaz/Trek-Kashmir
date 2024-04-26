@@ -1,0 +1,132 @@
+<!-- <button class="btn btn-outline-secondary mb-4" routerLink="/guide/treks/iternary/add/{{trekId}}">Add Iternary <i class="fa-solid fa-plus"></i></button> -->
+<div class="event-schedule-area-two bg-color pad100" *ngIf="iterneries;else elseBlock">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="section-title text-center">
+          <div class="title-text">
+            <h2>Event Schedule</h2>
+          </div>
+          <p>
+            
+          </p>
+        </div>
+      </div>
+      <!-- /.col end-->
+    </div>
+    <!-- row end-->
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade active show" id="home" role="tabpanel">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th class="text-center" scope="col">Day</th>
+                    <th scope="col">Image/Video</th>
+                    <th scope="col">Details</th>
+                    <th scope="col">Description</th>
+                    <th class="text-center" scope="col">Map</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="inner-box" *ngFor="let iternary of iterneries">
+                    <th scope="row">
+                      <div class="event-date">
+                        <p>Day</p>
+                        <span>{{ iternary.day }}</span>
+                      </div>
+                    </th>
+                    <td>
+                      <div class="event-img">
+                        <img *ngIf="!iternary.isVideo;else video"
+                          src="{{iternary.filePath?baseUrl+iternary.filePath:''}}"
+                          alt=""
+                        />
+                        <ng-template #video>
+                            <button class="btn btn-sm btn-success" routerLink="/guide/trek/video/gvxw">Watch Video</button>
+                        </ng-template>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="event-wrap">
+                        <h3>
+                          <a>{{ iternary.place }}</a>
+                        </h3>
+                        <div class="meta">
+                          <div class="categories text-primary">
+                            Camping<i
+                              class="fa-solid fa-check mt-1"
+                              style="color: #6dd96f"
+                              *ngIf="iternary.camping; else cross"
+                            ></i>
+                            <ng-template #cross>
+                              <i
+                                class="fa-solid mt-1 fa-xmark"
+                                style="color: #ea6148"
+                              ></i>
+                            </ng-template>
+                          </div>
+                          <div class="time">
+                            <span>Latitude-{{iternary.latitude}}</span>
+                            <span>  Longitude-{{iternary.longitude}}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="r-no">
+                        <span>{{iternary.description}}</span>
+                      </div>
+                    </td>
+                    <td>
+                      <!-- <div class="primary-btn">
+                        <a class="btn btn-primary text-light">Details</a>
+                      </div> -->
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        View Map
+                     </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- /col end-->
+      </div>
+      <!-- /row end-->
+    </div>
+  </div>
+</div>
+<ng-template #elseBlock>
+  <div class="alert alert-warning" role="alert">
+    No iternary for this trek!
+  </div>
+</ng-template>
+
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Trek Map</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <!-- map -->
+        <main>
+          <app-map embedLinkA="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1702829.7498542645!2d75.26496015!3d33.5315621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1698944363500!5m2!1sen!2sin"></app-map>
+          <!-- <app-map embedLinkA=""></app-map> -->
+        </main>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>

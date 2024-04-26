@@ -1,0 +1,21 @@
+@media (max-width: 767.98px) {
+    .border-sm-start-none {
+        border-left: none !important;
+    }
+}
+img{
+    height: 235px;
+}
+#searchbox {
+    height: 40px;
+    outline: 0;
+    min-width: 30vw;
+    width: auto;
+    margin: auto;
+    display: block;
+    border: 1px solid gray;
+    margin: 10px auto;
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+  

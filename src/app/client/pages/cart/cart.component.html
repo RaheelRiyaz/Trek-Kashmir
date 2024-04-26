@@ -1,0 +1,116 @@
+<div class="container">
+  <div class="row" *ngIf="mycart.length > 0; else nothingInCartSection">
+    <div class="col-12">
+      <form class="table-responsive" #table="ngForm">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Product</th>
+              <th scope="col"></th>
+              <th scope="col" class="text-center">Quantity</th>
+              <th scope="col" class="text-right">Price</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cart of mycart; index as i">
+              <td>
+                <img
+                id="productImg"
+                  src="{{
+                    cart.filePath
+                      ? baseUrl + cart.filePath
+                      : 'https://dummyimage.com/50x50/55595c/fff'
+                  }}"
+                />
+              </td>
+              <td>{{ cart.name }}</td>
+              <td></td>
+              <td>
+                <input
+                  class="form-control"
+                  type="number"
+                  [value]="cart.quantity"
+                  (input)="changeQuantity(i, $event)"
+                  min="1"
+                  max="10"
+                  required
+                  name="quantity"
+                />
+              </td>
+              <td class="text-right">
+                {{ cart.pricePerDay | currency : "INR" }}/day
+              </td>
+              <td class="text-right">
+                <button
+                  class="btn btn-sm btn-danger"
+                  (click)="removeFromCart(i)"
+                >
+                  <i class="fa fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><strong>Total</strong></td>
+              <td class="text-right">
+                <strong>{{ subTotal() | currency : "INR" }}</strong>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+    <div class="col mb-2">
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <button
+            class="btn btn-block btn-light"
+            routerLink="/client/trekkinggears"
+          >
+            Continue Shopping
+          </button>
+        </div>
+        <div class="col-sm-12 col-md-6 text-right">
+          <button class="btn btn-lg btn-block btn-success text-uppercase">
+            Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #nothingInCartSection>
+    <div class="container-fluid mt-100">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body cart">
+              <div class="col-sm-12 empty-cart-cls text-center">
+                <img
+                  src="https://i.imgur.com/dCdflKN.png"
+                  width="130"
+                  height="130"
+                  class="img-fluid mb-4 mr-3"
+                />
+                <h3><strong>Your Cart is Empty</strong></h3>
+                <h4>Add something to make me happy</h4>
+                <a
+                  routerLink="/client/trekkinggears"
+                  class="btn btn-primary cart-btn-transform m-3"
+                  data-abc="true"
+                  >Continue Shopping</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
+
+<!-- Footer -->

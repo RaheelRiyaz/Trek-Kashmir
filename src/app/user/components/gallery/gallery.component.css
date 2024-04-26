@@ -1,0 +1,28 @@
+.gallery-sec {
+  height: 100vh;
+  overflow: auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  /* background: url(../../../../assets/Images/imageedit_2_5234073199.jpg); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.gallery{
+    width: 400px;
+    cursor: pointer;
+    height: 400px;
+    margin: 20px;
+    transition: all .2s ease-in-out;
+}
+.gallery:hover{
+    transform: scale(1.1);
+}
+.gallery img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}

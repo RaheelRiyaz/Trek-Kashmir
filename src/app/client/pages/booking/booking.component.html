@@ -1,0 +1,37 @@
+<div class="page-content page-container" id="page-content">
+  <div class="padding">
+    <div class="row container d-flex justify-content-center">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-description">My Bookings</p>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>TotalAmount</th>
+                    <th>Amount Paid</th>
+                    <th>Payment Method</th>
+                    <th>Booking Status</th>
+                    <th>Payment Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let booking of bookings">
+                    <td>{{packageName}}</td>
+                    <td>{{booking.totalAmount}}</td>
+                    <td>{{booking.amountPaid}}</td>
+                    <td><label class="badge-success">{{booking.paymentMethod | appPaymentStatus}}</label></td>
+                    <td><label class="badge badge-danger">{{booking.bookingStatus | bookingStatus}}</label></td>
+                    <td><label class="badge badge-success">{{booking.appPaymentStatus | appPaymentStatus}}</label></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

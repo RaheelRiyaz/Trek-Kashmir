@@ -1,0 +1,119 @@
+.bg-white {
+  background-color: #fff;
+}
+
+.navbar-brand {
+  padding: 23.5px 20px;
+  font-size: 18px;
+}
+
+.navbar-nav {
+  width: 100%;
+}
+
+.nav-item {
+  padding: 20px 8px;
+  margin: 0px 3px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 16px;
+  color: grey;
+  position: static;
+}
+
+.nav-item.active {
+  color: #ef5350;
+}
+
+.nav-item:hover {
+  color: #ef5350;
+}
+
+a {
+  color: inherit !important;
+}
+
+.nav-link {
+  padding: 5px;
+}
+.tab {
+  margin-bottom: 20px;
+  width: 230px;
+}
+.activeTab {
+  color: #e91e63 !important;
+}
+.tab:hover {
+  color: #e91e63 !important;
+}
+
+.navbar-brand span {
+  color: blue;
+}
+li a {
+  color: black;
+  cursor: pointer;
+}
+nav {
+  box-shadow: -9px 0px 5px rgba(0, 0, 0, 0.5);
+}
+.profile {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-right: 20px;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+  background: 0;
+}
+
+.profile img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+.btn-close {
+  border: 0;
+  outline: 0;
+  border-radius: 50%;
+  background: 0;
+}
+.profile-image {
+  height: 100px;
+  width: 100px;
+  border: 1px solid gray;
+  border-radius: 50%;
+  margin: auto;
+}
+.profile-image img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.settings-menu {
+  position: absolute;
+  right: 55px;
+  border-radius: 10px;
+  top: 48px;
+  padding: 9px;
+  cursor: pointer;
+  z-index: 99;
+  background-color: #f7f7f7;
+  color: cornflowerblue;
+}
+.settings-menu li:hover{
+text-decoration: underline;
+}
+.settings-menu li {
+  list-style: none;
+}
+
+@media (max-width: 767px) {
+  .nav-item {
+    width: 100%;
+    text-align: left;
+    padding-left: 10px;
+  }
+}

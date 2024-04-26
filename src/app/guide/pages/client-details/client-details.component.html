@@ -1,0 +1,132 @@
+<div
+  class="container-fluid emp-profile"
+  #container
+  (click)="removeBlur(container, $event)"
+>
+  <form method="post">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="profile-img">
+          <img
+            src="{{ fileUrl + model.filePath }}"
+            alt=""
+            id="img"
+            (click)="blurImage(container, $event)"
+          />
+        </div>
+      </div>
+      <div class="col-md-6 mt-5">
+        <div class="profile-head font-weight-bold">
+          <h5>
+            {{ model.name | uppercase }}
+          </h5>
+          <ul class="nav nav-tabs mt-5" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                id="home-tab"
+                data-toggle="tab"
+                role="tab"
+                aria-controls="home"
+                aria-selected="true"
+                >About</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 mt-3 mx-5">
+        <div class="tab-content profile-tab" id="myTabContent">
+          <div
+            class="tab-pane fade show active"
+            id="home"
+            role="tabpanel"
+            aria-labelledby="home-tab"
+          >
+            <div class="row">
+              <div class="col-md-6">
+                <label class="color">Name</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{ model!.name | uppercase }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label class="color">User Id</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{ model.userName }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label class="color">Email</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{ model.email }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label class="color">Phone</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{ model.contactNo }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label class="color">User Type</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{ myUserRole }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label class="color">Gender</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{ gender }}</p>
+              </div>
+            </div>
+            <div *ngIf="address.result">
+              <div
+                class="row"
+                *ngFor="let address of address?.result; index as i"
+              >
+                <div class="col-md-6">
+                  <label class="color">Address {{ i + 1 }}</label>
+                </div>
+                <div class="col-md-6">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <span style="color: #0062cc"
+                          >{{ address.addressLine }} near
+                          {{ address.landmark }}, {{ address.city }},
+                          {{ address.state }}</span
+                        >
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- Modal -->
+<div
+  class="full-img m-auto modal-body"
+  [ngStyle]="{ display: imageToggle }"
+  (click)="removeBlur(container, $event)"
+>
+  <img src="{{ fileUrl + model.filePath }}" class="my-modal-image" alt="" />
+</div>

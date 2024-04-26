@@ -1,0 +1,83 @@
+<!-- Dropdown to choose whether to show Admins or Guides -->
+<div class="btn-group mt-3 mx-5">
+    <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Choose Employees
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" (click)="getAdmins()">Admins</a>
+      <a class="dropdown-item" (click)="getGuides()">Guides</a>
+      <!-- <a class="dropdown-item" href="#">Something else here</a>
+      <div class="dropdown-divider"></div> -->
+    </div>
+</div>
+
+
+
+<div class="container search-container mt-2">
+    <input 
+        *ngIf="isAdminsTable"
+        type="text" 
+        placeholder="Search" 
+        class="form-control mb-5"
+        style="height: 6vh; border-radius:14px; width: 50%; margin-left: 18vw;" 
+        #searchInput
+        (keyup)="searchAdmin($event)"
+    >
+
+    <input 
+        *ngIf="isGuidesTable"
+        type="text" 
+        placeholder="Search" 
+        class="form-control mb-5"
+        style="height: 6vh; border-radius:14px; width: 50%; margin-left: 18vw;" 
+        #searchInput
+        (keyup)="searchGuide($event)"
+    >
+    
+
+    <!-- Clients Table -->
+    <app-preloader *ngIf="!employees" class="text-center mt-5 mb-5">
+
+    </app-preloader>
+    <div class="h3 text-center text-secondary" *ngIf="message">
+        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+        {{message}}
+    </div>
+    <table class="table mt-5 mb-5 text-center" *ngIf="employees?.length>0">
+        
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>Contact Number</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let employee of employees">
+                <td>{{employee.name}}</td>
+                <td>{{employee.gender|gender}}</td>
+                <td>{{employee.email}}</td>
+                <td>{{employee.contactNo}}</td>
+                <td>
+                    <button class="btn btn-success mx-2" style="width: 60%;"
+                        [routerLink]="['/admin/details',employee.id]">
+                        Details
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- id?: string;
+public userName?: string;
+public name?: string;
+public gender?: number;
+public email?: string;
+public contactNo?: string;
+public userRole?: Number;
+public filePath?: string;
+public status?: Number;
+public createdOn?: string -->

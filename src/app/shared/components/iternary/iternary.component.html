@@ -1,0 +1,65 @@
+<!-- {{}} -->
+
+<div
+  [style.position]="token ? 'relative' : 'absolute'"
+  [class.my-bg]="!token"
+  class="event-schedule-area-two bg-color pad100 w-100"
+>
+  <div class="container" *ngIf="iterneries; else elseBlock">
+    <div class="schedule mt-5">
+      <div
+        class="card card-margin mt-5"
+        style="width: 70rem; height: 20rem"
+        *ngFor="let iternary of iterneries"
+      >
+        <div class="row">
+          <div class="col-md-6"></div>
+          <div class="col-md-6"></div>
+        </div>
+        <div class="card-body pt-0 p-3 d-flex">
+          <img src="{{ baseUrl + iternary.filePath }}" alt="" />
+          <div class="widget-49 ml-3">
+            <div class="widget-49-title-wrapper">
+              <div class="widget-49-date-success">
+                <span class="widget-49-date-month">Day</span>
+                <span class="widget-49-date-day">{{ iternary.day }}</span>
+              </div>
+              <div class="widget-49-meeting-info">
+                <span class="widget-49-pro-title">{{
+                  iternary.place | titlecase
+                }}</span>
+                <span class="widget-49-meeting-time"
+                  >Lat {{ iternary.latitude }} Long
+                  {{ iternary.longitude }}</span
+                >
+              </div>
+            </div>
+            <ol class="widget-49-meeting-points p-3">
+              <li class="widget-49-meeting-item">
+                <span>{{ iternary.description }}</span>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #elseBlock>
+    <div
+      class="title h1 text-center" 
+      [class.text-light]="!token"
+      [style.margin-top]="token ? '0px' : '100px'"
+    >
+      No Iternary found For this Trek
+    </div>
+    <div class="mx-auto d-flex justify-content-center">
+      <i class="fa-solid fa-3x fa-circle-exclamation" [class.text-light]="!token"></i>
+    </div>
+  </ng-template>
+</div>
+
+
+<main>
+  <app-map id="gmap" embedLinkA="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1702829.7498542645!2d75.26496015!3d33.5315621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1698944363500!5m2!1sen!2sin">
+  </app-map>
+</main>

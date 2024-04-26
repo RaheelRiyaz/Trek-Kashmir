@@ -1,0 +1,99 @@
+<app-preloader *ngIf="showLoader; else mainSection"> </app-preloader>
+<ng-template #mainSection>
+  <div
+    class="container-fluid"
+    style="z-index: -1"
+    [class.my-bg]="!token"
+    [style.position]="token ? 'relative' : 'absolute'"
+  >
+    <div
+      class="container rounded bg-white p-5"
+      [style.margin-top]="token ? '3rem' : '7rem'"
+    >
+      <div class="bg row d-flex justify-content-center p-5">
+        <div class="col-sm-12 col-md-12 mobile">
+          <div
+            class="bg-white p-3 d-flex flex-column"
+            style="border-radius: 14px"
+          >
+            <div class="pt-2">
+              <h5>Package Details</h5>
+            </div>
+
+            <div class="d-flex">
+              <div class="col-8">Booking</div>
+              <div class="ml-auto">
+                <b>{{
+                  packageDetails.packageBookingStatus == 1 ? " Open" : "Closed"
+                }}</b>
+              </div>
+            </div>
+            <div class="d-flex">
+              <div class="col-8">Group Size</div>
+              <div class="ml-auto">
+                <b>{{ packageDetails?.groupSize }}</b>
+              </div>
+            </div>
+            <div class="d-flex">
+              <div class="col-8">Total Booking</div>
+              <div class="ml-auto">
+                <b>{{ packageDetails?.totalBooking }}</b>
+              </div>
+            </div>
+
+            <div class="d-flex">
+              <div class="col-8">Booking Left</div>
+              <div class="ml-auto">
+                <b>{{
+                  packageDetails?.groupSize - packageDetails?.totalBooking
+                }}</b>
+              </div>
+            </div>
+            <div class="d-flex">
+              <div class="col-8">Start Date</div>
+              <div class="ml-auto">
+                <b>{{ packageDetails?.startDate | date }}</b>
+              </div>
+            </div>
+            <div class="d-flex">
+              <div class="col-8">End Date</div>
+              <div class="ml-auto">
+                <b>{{ packageDetails?.endDate | date }}</b>
+              </div>
+            </div>
+            <div class="d-flex">
+              <div class="col-8">Guide Name</div>
+              <div class="ml-auto green">{{ packageDetails?.guideName }}</div>
+            </div>
+            <div class="d-flex">
+              <div class="col-8">Guid Contact Number</div>
+              <div class="ml-auto">
+                <strong>{{ packageDetails?.guideContactNo }}</strong>
+              </div>
+            </div>
+            <div class="d-flex">
+              <div class="col-8">Package Price</div>
+              <div class="ml-auto green">
+                {{ packageDetails?.price | currency : "INR" }}
+              </div>
+            </div>
+            <div class="pt-2">
+              <div class="border-top px-4 mx-8 pt-2"></div>
+              <h5>Package description</h5>
+            </div>
+            <div class="pl-2">
+              <div>{{ packageDetails?.description }}</div>
+            </div>
+            <button
+              class="btn btn-success mt-2"
+              (click)="bookPackage(packageDetails.id)"
+              *ngIf="buyPackage"
+            >
+              Buy Package
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

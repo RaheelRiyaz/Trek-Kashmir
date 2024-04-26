@@ -1,0 +1,9 @@
+.date{
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px;
+    outline: 0;
+}
+textarea{
+    resize: none;
+}

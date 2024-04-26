@@ -1,0 +1,146 @@
+<div class="card mx-auto" style="width: 45rem">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h1 class="modal-title fs-5" id="staticBackdropLabel">
+        Add New Iternary for this Trek
+      </h1>
+    </div>
+    <form #form class="modal-body" enctype="multipart/form-data">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-floating mb-3">
+            <label for="place">Place</label>
+            <input
+              type="text"
+              class="form-control"
+              id="place"
+              placeholder="Place"
+              name="place"
+              ngModel
+              #place="ngModel"
+              required
+              [class.is-invalid]="place.touched && place.invalid"
+            />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-floating mb-3">
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              name="day"
+            >
+              <option selected>Day</option>
+              <option value="0">Sunday</option>
+              <option value="1">Monday</option>
+              <option value="2">Tuesday</option>
+              <option value="3">Wednesday</option>
+              <option value="4">Thursday</option>
+              <option value="5">Friday</option>
+              <option value="6">Saturday</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-floating mb-3">
+            <label for="latitude">Latitude</label>
+            <input
+              type="number"
+              class="form-control"
+              id="latitude"
+              placeholder="Latitude"
+              name="latitude"
+              ngModel
+              #latitude="ngModel"
+              required
+              [class.is-invalid]="latitude.touched && latitude.invalid"
+            />
+          </div>
+         
+        </div>
+        <div class="col-md-6">
+            <div class="form-floating mb-3">
+              <label for="latitude">Longitude</label>
+              <input
+                type="number"
+                class="form-control"
+                id="longitude"
+                placeholder="Longitude"
+                name="longitude"
+                ngModel
+                #longitude="ngModel"
+                required
+                [class.is-invalid]="longitude.touched && longitude.invalid"
+              />
+            </div>
+          </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-floating mt-3">
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              name="camping"
+              ngModel
+              #camping="ngModel"
+            >
+              <option selected value="" disabled>Camping</option>
+              <option value="true">True</option>
+              <option value="false">False</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-4" *ngIf="camping.value == 'false'">
+          <div class="form-floating mt-3">
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              name="hotelId"
+            >
+              <option selected disabled>Hotel</option>
+              <option *ngFor="let hotel of hotels" value="{{ hotel.id }}">
+                {{ hotel.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="mt-3">
+        <label for="formFile" class="form-label">Choose Images</label>
+        <input
+          class="form-control"
+          type="file"
+          id="formFile"
+          multiple
+          #file
+          name="files"
+        />
+      </div>
+      <div class="form-floating mt-3">
+        <label for="floatingTextarea">Description</label>
+        <textarea
+          class="form-control"
+          placeholder="Leave a Description here"
+          id="floatingTextarea"
+          place="description"
+          cols="20"
+          rows="4"
+          ngModel
+          #desc="ngModel"
+          name="description"
+          required
+          [class.is-invalid]="desc.touched && desc.invalid"
+        ></textarea>
+      </div>
+    </form>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="addIternary(form)">
+        Add New Iternary
+      </button>
+    </div>
+  </div>
+</div>

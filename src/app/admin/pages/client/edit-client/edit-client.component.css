@@ -1,0 +1,10 @@
+.container {
+    border-radius: 10px;
+    box-shadow: 4px 7px 20px 2px;
+    width: 50%;
+}
+
+.btn{
+    width: 50%;
+    text-align: center;
+}

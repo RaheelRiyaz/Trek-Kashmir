@@ -1,0 +1,41 @@
+<section class="p-5">
+  <h1 class="text-center" style="color: #c3e1f6">Our Packages</h1>
+  <div
+    class="container d-flex align-items-center justify-content-center flex-wrap"
+  >
+    <div class="box" *ngFor="let package of packages">
+      <div class="body">
+        <div class="imgContainer">
+          <img
+            src="https://images.pexels.com/photos/3601422/pexels-photo-3601422.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            alt=""
+          />
+        </div>
+        <div
+          class="content d-flex flex-column align-items-center justify-content-center"
+        >
+          <div>
+            <h3 class="text-white fs-5">{{ package.name }}</h3>
+            <p class="fs-6 text-white">
+              {{ package.description }}
+            </p>
+            <button
+              class="btn btn-dark mt-2 p-2"
+              (click)="bookPackage(package.id)"
+            >
+              Book Package
+            </button>
+            <button
+              class="btn btn-info ml-1 btn-sm mt-2 p-2"
+              routerLink="/packages/details/{{package.id}}"
+            >
+              Package Details
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+  </div>
+    <button class="btn btn-primary mx-auto d-block" routerLink="/packages">View All Packages</button>
+</section>

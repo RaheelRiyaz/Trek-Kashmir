@@ -1,0 +1,82 @@
+<div class="container">
+    <!-- <div class="text-primary text-center h2 mt-2 mb-3">ADD HOTEL</div> -->
+    <form class="form" #hotelForm="ngForm" (ngSubmit)="putHotel()">
+        <!-- Hotel Name -->
+        <div class="form-group mt-4">
+            <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="form-control mt-3"
+                placeholder="Enter Hotel Name"
+                #name="ngModel"
+                [(ngModel)]="hotel.name"
+            >
+            <!-- <div class="text-danger" *ngIf="name.touched && name.invalid">
+                <div class="errorMessage" *ngIf="name.errors && name.errors['required']">
+                    Please enter hotel name
+                </div>
+            </div> -->
+        </div>
+        <!-- Hotel Star Rating -->
+        <div class="form-group">
+            <input
+                type="number"
+                id="star"
+                name="star"
+                class="form-control mt-4"
+                required
+                placeholder="Enter Star Rating for the Hotel"
+                #star="ngModel"
+                [(ngModel)]="hotel.star"
+            >
+            <!-- <div class="text-danger" *ngIf="star.touched && star.invalid">
+                <div class="errorMessage" *ngIf="star.errors && star.errors['required']">
+                    Star rating is required
+                </div>
+            </div> -->
+        </div>
+
+        <!-- Hotel Image FilePath -->
+        <div class="form-group">
+            <input
+                type="file"
+                id="file"
+                name="file"
+                class="form-control mt-4"
+                placeholder="Choose image"
+                #file="ngModel"
+                [(ngModel)]="hotel.file"
+            >
+            <!-- <label for="file">Select Image</label> -->
+        </div>
+
+        <!-- Hotel Description -->
+        <div class="form-group">
+            <textarea 
+                id="description" 
+                name="description" 
+                class="form-control mt-4 mb-4" 
+                placeholder="Write description here." 
+                rows="4" 
+                required="required" 
+                data-error="Please, leave us a description"
+                #description="ngModel"
+                [(ngModel)]="hotel.description"
+            >
+            </textarea>
+            <!-- <div class="text-danger" *ngIf="description.touched && description.invalid">
+                <div class="errorMessage" *ngIf="descriptionerrors && description.errors['required']">
+                    Description is required
+                </div>
+            </div> -->
+        </div>
+        <!-- Submit -->
+        <div class="text-center d-grid flex mt-2">
+            <button class="btn btn-primary" type="submit">
+                Update
+            </button>
+        </div>
+    </form>
+</div>

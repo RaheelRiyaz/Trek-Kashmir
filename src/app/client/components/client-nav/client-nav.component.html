@@ -1,0 +1,296 @@
+<div class="container-fluid px-0">
+  <nav class="navbar navbar-expand-md navbar-light p-0">
+    <a class="navbar-brand mx-auto">Trek The <span>Kashmir</span></a>
+    <button
+      class="navbar-toggler mr-3"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse ms-5" id="navbarNav">
+      <ul class="navbar-nav">
+        <li
+          class="nav-item"
+          routerLinkActive="activeTab"
+          routerLink="/client/home"
+        >
+          <a>Home</a>
+        </li>
+        <li
+          class="nav-item"
+          routerLinkActive="activeTab"
+          routerLink="packages"
+        >
+          <a>Packages</a>
+        </li>
+        <li
+          class="nav-item"
+          routerLink="/client/trekkinggears"
+          routerLinkActive="activeTab"
+        >
+          <a>Trekking-Gears</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a>Trek</a>
+        </li> -->
+        <li class="nav-item" routerLink="treks" routerLinkActive="activeTab">
+          <a>Treks</a>
+        </li>
+        <li class="nav-item" routerLink="/client/bookings" routerLinkActive="activeTab">
+          <a>Bookings</a>
+        </li>
+      </ul>
+      <a
+        class="btn btn-success btn-sm ml-3 text-light"
+        style="color: white"
+        routerLink="/client/cart"
+      >
+        <i class="fa fa-shopping-cart text-light"></i>
+        <span class="text-light ml-1 mr-1"></span>
+        <span class="badge badge-light">{{ cartItemCount }}</span>
+      </a>
+      <button class="profile" type="button">
+        <img
+          class="profile"
+          src="https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI="
+          alt=""
+          (click)="
+            toggler === 'none' ? (toggler = 'block') : (toggler = 'none')
+          "
+        />
+      </button>
+    </div>
+    <div class="settings-menu" [ngStyle]="{ display: toggler }">
+      <li
+        (click)="toggler = 'none'"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+        data-bs-whatever="@mdo"
+      >
+        Settings
+      </li>
+      <li
+        data-bs-target="#staticBackdrop"
+        data-bs-toggle="modal"
+        (click)="toggler = 'none'"
+      >
+        Profile
+      </li>
+      <li (click)="logoutConfirmation()">Logout</li>
+    </div>
+  </nav>
+</div>
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+  #profileModal
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">
+          Profile Details
+        </h1>
+        <button
+          type="button"
+          class="btn-close cursor-pointer"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <i class="fa-solid fa-2x fa-xmark"></i>
+        </button>
+      </div>
+      <form #profileForm="ngForm" class="modal-body">
+        <div class="profile-image">
+          <img
+            #profilePicture
+            src="{{
+              loggedInUser?.result.filePath
+                ? baseUrl + loggedInUser?.result.filePath
+                : ''
+            }}"
+            alt=""
+          />
+        </div>
+        <div class="mb-3">
+          <label for="formFile" class="form-label"
+            >Choose New Profile Picture</label
+          >
+          <div class="d-flex">
+            <input
+              class="form-control"
+              type="file"
+              id="formFile"
+              (change)="getImg($event)"
+              #file
+            />
+            <button
+              class="btn btn-sm btn-primary"
+              (click)="updateProfilePicture(file)"
+            >
+              Upload
+            </button>
+          </div>
+        </div>
+        <div class="form-floating mb-3">
+          <label for="name">Name</label>
+          <input
+            type="name"
+            class="form-control"
+            id="name"
+            placeholder="name"
+            #name="ngModel"
+            name="name"
+            [(ngModel)]="loggedInUser?.result.name"
+          />
+        </div>
+        <div class="form-floating mb-3">
+          <label for="email">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="name@example.com"
+            #email="ngModel"
+            [(ngModel)]="loggedInUser?.result.email"
+            name="email"
+          />
+        </div>
+        <div class="form-floating">
+          <label for="contactNo">Contact Number</label>
+          <input
+            type="tel"
+            class="form-control"
+            id="contactNo"
+            placeholder="Contact Number"
+            #contactNo="ngModel"
+            [(ngModel)]="loggedInUser?.result.contactNo"
+            name="contactNo"
+          />
+        </div>
+        <div class="form-floating mt-3">
+          <select
+            class="form-select form-select-lg mb-3"
+            aria-label="Large select example"
+            name="gender"
+            [(ngModel)]="loggedInUser?.result.gender"
+          >
+            <option selected>Open this select menu</option>
+            <option [ngValue]="1">Male</option>
+            <option [ngValue]="2">Female</option>
+          </select>
+        </div>
+      </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="accountUpdate(profileForm.value)"
+        >
+          Save Changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Settings Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  #settingsModal
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-modal="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Change Password</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form #changePasswordForm="ngForm">
+          <div class="mb-3">
+            <label for="oldPassword" class="col-form-label">Old Password</label>
+            <input
+              type="text"
+              class="form-control"
+              id="oldPassword"
+              name="oldPassword"
+              required
+              #oldPass="ngModel"
+              [(ngModel)]="changePasswordModel.oldPassword"
+              [class.is-invalid]="oldPass.touched && oldPass.invalid"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="newPassword" class="col-form-label">New Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="newPassword"
+              name="newPassword"
+              required
+              #newPass="ngModel"
+              [(ngModel)]="changePasswordModel.newPassword"
+              [class.is-invalid]="newPass.touched && newPass.invalid"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="confirmPassword" class="col-form-label"
+              >Confirm Password</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              id="confirmPassword"
+              name="confirmPassword"
+              required
+              #confirmPass="ngModel"
+              [(ngModel)]="changePasswordModel.confirmPassword"
+              [class.is-invalid]="
+                (confirmPass.touched && confirmPass.invalid) ||
+                (confirmPass.valid && confirmPass.value !== newPass.value)
+              "
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          [disabled]="
+            changePasswordForm.invalid ||
+            (changePasswordForm.valid && confirmPass.value !== newPass.value)
+          "
+          (click)="changePassword()"
+        >
+          Change Password
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,124 @@
+<div class="card mt-5 mx-auto" style="width: 48rem">
+  <form
+    #updatePackageForm="ngForm"
+    (ngSubmit)="updatePackage()"
+    class="card-body"
+  >
+    <div class="d-flex"></div>
+    <div class="row">
+      <div class="col md-6">
+        <div class="form-floating mb-3">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Name"
+            name="name"
+            [(ngModel)]="updateModel.name"
+          />
+        </div>
+      </div>
+      <div class="col md-6">
+        <div class="form-floating mb-3">
+          <label for="price">Price</label>
+          <input
+            type="number"
+            class="form-control"
+            id="price"
+            placeholder="price"
+            name="price"
+            [(ngModel)]="updateModel.price"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col md-6">
+        <div class="form-floating mb-3">
+          <label for="groupSize">Group Size</label>
+          <input
+            type="number"
+            class="form-control"
+            id="groupSize"
+            placeholder="Group Size"
+            name="groupSize"
+            [(ngModel)]="updateModel.groupSize"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col md-6">
+        <div class="form-floating mb-3">
+          <label for="startDate">Start Date</label>
+          <input
+            type="date"
+            class="form-control"
+            id="startDate"
+            placeholder="name@example.com"
+            name="startDate"
+            [(ngModel)]="updateModel.startDate"
+          />
+        </div>
+      </div>
+      <div class="col md-6">
+        <div class="form-floating mb-3">
+          <label for="startDate">End Date</label>
+          <input
+            type="date"
+            class="form-control"
+            id="endDate"
+            name="endDate"
+            [(ngModel)]="updateModel.endDate"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <select
+          class="form-select form-select-lg mb-3"
+          aria-label="Large select example"
+          name="guide"
+          [(ngModel)]="updateModel.guideId"
+        >
+          <option selected value="">Choose Guide</option>
+          <option value="{{ guide.id }}" *ngFor="let guide of guides">
+            {{ guide.name | titlecase }}
+          </option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <select
+          class="form-select form-select-lg mb-3"
+          aria-label="Large select example"
+          name="packageBookingStatus"
+          [(ngModel)]="updateModel.packageBookingStatus"
+        >
+          <option selected [ngValue]="0">Status</option>
+          <option [ngValue]="1">Open</option>
+          <option [ngValue]="2">Close</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-floating">
+          <label for="floatingTextarea2">Description</label>
+          <textarea
+            class="form-control"
+            placeholder="Leave a comment here"
+            id="floatingTextarea2"
+            style="height: 100px"
+            name="description"
+            [(ngModel)]="updateModel.description"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="d-grid mt-2">
+      <button class="btn btn-success">Update Package</button>
+    </div>
+  </form>
+</div>

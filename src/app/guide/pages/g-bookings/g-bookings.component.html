@@ -1,0 +1,89 @@
+<!-- <div class="container" style="width: 80vw; margin-right:1.5%;">
+    <div><h1><strong class="">Bookings</strong></h1></div>
+    <div class="container card py-3">
+       <table class="table table-striped table-hover">
+          <thead>
+             <tr>
+                <td>Name</td>
+                <td>Email</td>
+                <td>Mobile Number</td>
+                <td>No. of Adults</td>
+                <td>No. of Children</td>
+                <td>Package</td>
+                <td>Action</td>
+             </tr>
+          </thead>
+          <tbody>
+             <tr *ngFor="let booking of bookings">
+                <td>
+                   {{booking.name}}
+                </td>
+                <td>
+                   {{booking.email}}
+                </td>
+                <td>
+                   {{booking.phoneNumber}}
+                </td>
+                <td>
+                   {{booking.noOfAdults}}
+                </td>
+                <td>
+                   {{booking.noOfChildrens}}
+                </td>
+                <td>
+                   {{booking.packageId}}
+                </td>
+                <td>
+                   <button id="{{booking.id}}" class="btn btn-outline-secondary text-center btn-sm"><img src="/assets/icons/pencil-square.svg" alt=""></button> |
+                   <button class="btn btn-outline-secondary btn-sm"><img src="/assets/icons/trash3-fill.svg" alt=""></button>
+                </td>
+             </tr>
+          </tbody>
+       </table>
+    </div>
+    
+ </div> -->
+
+ <div class="container" style="width: 80vw; margin-right:1.5%;">
+   <div><h1><strong class="">Bookings</strong></h1></div>
+   <div class="container card py-3">
+      <table class="table table-striped table-hover">
+         <thead>
+            <tr>
+               <td>Package Name</td>
+               <td>Booked By</td>
+               <td>Grou Size</td>
+               <td>Start Date</td>
+               <td>End Date</td>
+               <td>Package Booking Status</td>
+               <td>Total Bookings</td>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td>
+                  {{package.name}}
+               </td>
+               <td>
+                  {{userName}}
+               </td>
+               <td>
+                  {{package.groupSize}}
+               </td>
+               <td>
+                  {{package.startDate | date}}
+               </td>
+               <td>
+                  {{package.endDate | date}}
+               </td>
+               <td>
+                  {{package.packageBookingStatus | bookingStatus}}
+               </td>
+               <td>
+                  {{package.totalBooking}}
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+</div>

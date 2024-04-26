@@ -1,0 +1,14 @@
+<table>
+    <thead>
+        <td>Name</td>
+        <td>Starting Price</td>
+        <td>Starting From</td>
+        <td>Ending On</td>
+    </thead>
+    <tr *ngFor="let package of packages">
+        <td>{{package.name}}</td>
+        <td>{{package.startingPrice}}</td>
+        <td>{{package.startingFrom}}</td>
+        <td>{{package.endingOn}}</td>
+    </tr>
+</table>

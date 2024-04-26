@@ -1,0 +1,86 @@
+<div class="card mt-3 mx-auto" style="width: 48rem">
+  <h5 class="card-title ml-3 mt-3">Gear Details</h5>
+  <div class="d-flex justify-content-between mr-5">
+    <h6 class="card-subtitle ml-3 mb-4 text-body-secondary">
+      You can update gear details.
+    </h6>
+    <button class="btn btn-outline-dark" (click)="selectImage()">
+      Add Files <i class="fa-solid fa-plus"></i>
+    </button>
+  </div>
+  <form
+    #updateGearForm="ngForm"
+    class="card-body"
+    (ngSubmit)="updateGearDetails()"
+  >
+    <label for="name">Name</label>
+    <div class="form-floating mt-1">
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        placeholder="Name"
+        name="name"
+        [(ngModel)]="updateGear.name"
+      />
+    </div>
+    <div class="form-floating mt-1">
+      <label for="floatingPassword">Size</label>
+      <input
+        type="number"
+        class="form-control"
+        id="size"
+        placeholder="Size"
+        name="size"
+        [(ngModel)]="updateGear.size"
+      />
+    </div>
+    <div class="form-floating mt-1">
+      <label for="floatingPassword">Quantity</label>
+      <input
+        type="number"
+        class="form-control"
+        id="quantity"
+        placeholder="Quantity"
+        name="quantity"
+        [(ngModel)]="updateGear.quantity"
+      />
+    </div>
+    <div class="form-floating mt-1">
+      <label for="floatingPassword">Size</label>
+      <input
+        type="number"
+        class="form-control"
+        id="size"
+        placeholder="Size"
+        name="size"
+        [(ngModel)]="updateGear.size"
+      />
+    </div>
+    <div class="form-floating mt-1">
+      <label for="price">Price</label>
+      <input
+        type="number"
+        class="form-control"
+        id="price"
+        placeholder="Price per day"
+        name="pricePerDay"
+        [(ngModel)]="updateGear.pricePerDay"
+      />
+    </div>
+    <div class="form-floating mt-1">
+      <label for="floatingTextarea2">Description</label>
+      <textarea
+        class="form-control"
+        placeholder="Leave a description here"
+        id="floatingTextarea2"
+        style="height: 100px"
+        name="desription"
+        [(ngModel)]="updateGear.description"
+      ></textarea>
+    </div>
+    <div class="d-grid">
+      <button class="mt-2 btn btn-primary w-100">Update Gear</button>
+    </div>
+  </form>
+</div>

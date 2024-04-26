@@ -1,0 +1,57 @@
+<div class="container search-container mt-5">
+    <input 
+        type="text" 
+        placeholder="Search" 
+        class="form-control mb-5"
+        style="height: 6vh; border-radius:14px; width: 50%; margin-left: 18vw;" 
+        #searchInput
+        (keyup)="searchClient($event)"
+    >
+    
+
+    <!-- Clients Table -->
+    <app-preloader *ngIf="!clients" class="text-center mt-5 mb-5">
+
+    </app-preloader>
+    <div class="h3 text-center text-secondary" *ngIf="message">
+        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+        {{message}}
+    </div>
+    <table class="table mt-5 mb-5 text-center" *ngIf="clients?.length>0">
+        
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>Contact Number</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let client of clients">
+                <td>{{client.name}}</td>
+                <td>{{client.gender|gender}}</td>
+                <td>{{client.email}}</td>
+                <td>{{client.contactNo}}</td>
+                <td>
+                    <button class="btn btn-success mx-2" style="width: 60%;"
+                        [routerLink]="['/admin/details',client.id]">
+                        Details
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- id?: string;
+public userName?: string;
+public name?: string;
+public gender?: number;
+public email?: string;
+public contactNo?: string;
+public userRole?: Number;
+public filePath?: string;
+public status?: Number;
+public createdOn?: string -->

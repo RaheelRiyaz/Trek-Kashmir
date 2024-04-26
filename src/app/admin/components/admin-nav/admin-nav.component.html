@@ -1,0 +1,63 @@
+<!--sidebar start-->
+<div class="sidebar">
+  <div class="profile_info">
+    <img src="{{filePath}}" class="profile_image" alt="" />
+    <h4>{{User}}</h4>
+  </div>
+  <a
+    class="a-design"
+    routerLinkActive="active"
+    routerLink="/admin"
+    [routerLinkActiveOptions]="{ exact: true }"
+    ><i class="fas fa-desktop"></i><span>Dashboard</span></a
+  >
+  <a class="a-design" routerLinkActive="active" routerLink="/admin/hotels"
+    ><i class="fa-solid fa-hotel"></i><span>Hotels</span></a
+  >
+  <a class="a-design" routerLinkActive="active" routerLink="/admin/packages"
+    ><i class="fa-solid fa-box-open"></i><span>Packages</span></a
+  >
+  <a class="a-design" routerLinkActive="active" routerLink="/admin/trekkingears"
+    ><i class="fa-solid fa-location-pin"></i><span>Trekking Gears</span></a
+  >
+
+  <a class="a-design" routerLinkActive="active" routerLink="/admin/clients">
+    <i class="fa-solid fa-user"></i><span>Clients</span>
+  </a>
+  <a class="a-design" routerLinkActive="active" routerLink="/admin/employees">
+    <i class="fa-solid fa-users"></i><span>Employees</span>
+  </a>
+  <a class="a-design" routerLinkActive="active" routerLink="/admin/addAccount">
+    <i class="fa-solid fa-plus"></i><span>Add Users</span>
+  </a>
+  <div class="dropdown">
+    <button
+      class="btn dropdown-toggle"
+      type="button"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+      style="background: none; margin-left: 25px; outline: none; color: white"
+      routerLinkActive="active"
+    >
+      <i class="fas fa-sliders-h"></i>Settings
+    </button>
+    <ul class="dropdown-menu">
+      <li>
+        <a class="dropdown-item" routerLink="/admin/settings/account"
+          >Account</a
+        >
+      </li>
+      <li>
+        <a class="dropdown-item" routerLink="/admin/settings/profile"
+          >Profile</a
+        >
+      </li>
+      <li>
+        <a class="dropdown-item" (click)="logoutConfirmation()">Logout</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="content">
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,11 @@
+.container {
+    margin-top: 6vh;
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: 4px 3px 20px 0px;
+    padding: 4%;
+}
+
+button{
+    width: 50%;
+}

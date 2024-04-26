@@ -1,0 +1,59 @@
+<!--Main Navigation-->
+<!-- Background image -->
+<div id="intro">
+    <div class="mask d-flex align-items-center h-100">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-5 col-md-8">
+            <form class="bg-white rounded-5 shadow-5-strong p-5" #loginForm="ngForm" (ngSubmit)="login()">
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <input
+                  type="text"
+                  id="form1Example1"
+                  name="userName"
+                  class="form-control"
+                  placeholder="Username"
+                  [(ngModel)]="loginModel.userName"
+                  required
+                  #userName="ngModel"
+                  [class.is-invalid]="userName.touched&&userName.invalid"
+                />
+              </div>
+  
+              <!-- Password input -->
+              <div class="form-outline mb-4">
+                <input
+                  type="password"
+                  id="form1Example2"
+                  class="form-control"
+                  name="password"
+                  placeholder="Password"
+                  [(ngModel)]="loginModel.password"
+                  required
+                  #password="ngModel"
+                  [class.is-invalid]="password.touched&&password.invalid"
+  
+                />
+              </div>
+  
+              <!-- 2 column grid layout for inline styling -->
+              <div class="row mb-4">
+                <div class="col text-start">
+                  <!-- Simple link -->
+                  <a>Don't have an account <span class="text-primary cursor-pointer" routerLink="/signup">Signup</span></a>
+                  <br><a class="text-info cursor-pointer" (click)="fireSwal()">Forgot password?</a>
+                </div>
+              </div>
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-primary btn-block" [disabled]="loginForm.invalid">
+                Sign in
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Background image -->
+  

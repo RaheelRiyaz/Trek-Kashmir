@@ -1,0 +1,114 @@
+<div class="card mt-5 mx-auto" style="width: 48rem">
+    <form
+      #updateTrekForm="ngForm"
+      (ngSubmit)="updateTrek()"
+      class="card-body"
+    >
+      <div class="d-flex"></div>
+      <div class="row">
+        <div class="col md-6">
+          <div class="form-floating mb-3">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              placeholder="Name"
+              name="name"
+              [(ngModel)]="updateTrekModel.name"
+            />
+          </div>
+        </div>
+        <div class="col md-6">
+          <div class="form-floating mb-3">
+            <label for="latitude">Latitude</label>
+            <input
+              type="number"
+              class="form-control"
+              id="latitude"
+              placeholder="latitude"
+              name="latitude"
+              [(ngModel)]="updateTrekModel.latitude"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col md-6">
+          <div class="form-floating mb-3">
+            <label for="longitude">Longitude</label>
+            <input
+              type="number"
+              class="form-control"
+              id="longitude"
+              placeholder="Group Size"
+              name="longitude"
+              [(ngModel)]="updateTrekModel.longitude"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col md-6">
+          <div class="form-floating mb-3">
+            <label for="startDate">Start Date</label>
+            <input
+              type="date"
+              class="form-control"
+              id="startDate"
+              placeholder="name@example.com"
+              name="startDate"
+              [(ngModel)]="updateTrekModel.startDate"
+            />
+          </div>
+        </div>
+        <div class="col md-6">
+          <div class="form-floating mb-3">
+            <label for="startDate">End Date</label>
+            <input
+              type="date"
+              class="form-control"
+              id="endDate"
+              name="endDate"
+              [(ngModel)]="updateTrekModel.endDate"
+            />
+          </div>
+        </div>
+      </div>
+      <!-- <div class="row">
+        <div class="col-md-6">
+          <select
+            class="form-select form-select-lg mb-3"
+            aria-label="Large select example"
+            name="guide"
+            [(ngModel)]="updateTrekModel.packageId"
+          >
+            <option selected value="">Choose Guide</option>
+            <option value="{{ package.id }}" *ngFor="let package of packages">
+              {{ package.name | titlecase }}
+            </option>
+          </select>
+        </div>
+      </div> --> 
+     
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-floating">
+            <label for="floatingTextarea2">Description</label>
+            <textarea
+              class="form-control"
+              placeholder="Leave a comment here"
+              id="floatingTextarea2"
+              style="height: 100px"
+              name="description"
+              [(ngModel)]="updateTrekModel.description"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="d-grid mt-2">
+        <button class="btn btn-primary">Update Trek</button>
+      </div>
+    </form>
+  </div>
+  

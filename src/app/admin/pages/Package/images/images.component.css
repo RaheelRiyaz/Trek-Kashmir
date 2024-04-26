@@ -1,0 +1,11 @@
+img{
+    height: 95%;
+    width: 100%;
+    object-fit: cover;
+}
+.d-flex{
+    flex-wrap: wrap;
+}
+.blur{
+    filter: blur(5px);
+}
